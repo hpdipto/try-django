@@ -2,6 +2,24 @@
 
 {% block content %}
     <h1>About</h1>
-    {{ request.user }}
     <p>This is a templage</p>
+
+    <p>
+        {{ my_html|safe }}
+    </p>
+
+    <p>
+        {{ my_text }}, {{ my_number }} {{ my_list }}
+    </p>
+
+    <ul>
+        {% for my_sub_item in my_list %}
+            {% if my_sub_item == 2 %}
+                <li>{{ forloop.counter }} - {{ my_sub_item|add:5 }}</li>
+            {% else %}
+                <li>{{ forloop.counter }} - {{ my_sub_item }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
 {% endblock %}
